@@ -1,3 +1,7 @@
-<h1>
-  {{title}}
-</h1>
+<form [formGroup]="model">
+  <ol formArrayName="questions">
+    <li *ngFor="let q of model.get('questions').controls; let i=index">
+      <app-question [question]="getQuestion(q.value.id)" [formControlName]="i"></app-question>
+    </li>
+  </ol>
+</form>
